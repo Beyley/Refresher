@@ -38,15 +38,15 @@ jobs:
       run: dotnet restore
       
     - name: Publish for Linux x64
-      if: ${{ matrix.os }} == 'ubuntu-latest'
+      if: matrix.os == 'ubuntu-latest'
       run: dotnet publish -c Release -r linux-x64 --self-contained Refresher /p:Version=${VERSION}
       
     - name: Publish for Windows x64
-      if: ${{ matrix.os }} == 'windows-latest'
+      if: matrix.os == 'windows-latest'
       run: dotnet publish -c Release -r win-x64 --self-contained Refresher /p:Version=${VERSION}
       
     - name: Upload Linux x64 build
-      if: ${{ matrix.os }} == 'ubuntu-latest'
+      if: matrix.os == 'ubuntu-latest'
       uses: actions/upload-artifact@v3.1.1
       with:
           name: "Refresher for Linux x64"
@@ -55,7 +55,7 @@ jobs:
           retention-days: 30
           
     - name: Upload Windows x64 build
-      if: ${{ matrix.os }} == 'windows-latest'
+      if: matrix.os == 'windows-latest'
       uses: actions/upload-artifact@v3.1.1
       with:
           name: "Refresher for Windows x64"
