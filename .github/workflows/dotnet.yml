@@ -42,7 +42,7 @@ jobs:
       
     - name: Publish for Linux x64
       if: matrix.os == 'ubuntu-latest'
-      run: dotnet publish -c Release -r linux-x64 --self-contained Refrsher /p:Version=${VERSION}
+      run: dotnet publish -c Release -r linux-x64 --self-contained Refresher /p:Version=${VERSION}
       
     - name: Publish for Windows x64
       if: matrix.os == 'windows-latest'
